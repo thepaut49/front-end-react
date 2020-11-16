@@ -61,8 +61,9 @@ class App extends React.Component {
     }));
   };
   login = (userData) => {
+    console.log(userData);
     this.setState(prevState => ({
-      user: userData,
+      user: userData,   
     }));
   }
 	render() {

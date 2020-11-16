@@ -4,16 +4,12 @@ import axios from "axios";
 class LoginForm extends React.Component {
 	state = { username: '', password: '' };
 	handleSubmit = async (event) => {
-  	event.preventDefault();
-    const resp = await axios.post("http://localhost:8080/users/signin",  {
-            username: this.state.username,
-            password: this.state.password,
-        }
-    );
-    this.props.onSubmit(resp.data);
-    console.log(resp);
-    this.setState({ username: '', password: '' });
-  };
+        event.preventDefault();
+        const resp = await axios.post(`http://localhost:8080/users/signin?username=${this.state.username}&password=${this.state.password}`);
+        console.log(resp);
+        this.props.onSubmit(resp.data);
+        this.setState({ username: '', password: '' });
+    };
 	render() {
   	return (
     	<form onSubmit={this.handleSubmit}>
